@@ -1,5 +1,5 @@
 import { Video } from '../types';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 import { BsPlay, BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
@@ -28,7 +28,11 @@ const VideoCard: NextPage<IProps> = ({ post }: IProps) => {
         }
     }
 
-
+    useEffect(() => {
+        if (videoRef?.current) {
+            videoRef.current.muted = isMuted;
+        }
+    }, [isMuted])
 
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
@@ -71,7 +75,7 @@ const VideoCard: NextPage<IProps> = ({ post }: IProps) => {
                         setIsHover(false);
                     }}
                     className='rounded-3xl'>
-                    <Link href="/">
+                    <Link href={`/detail/${post._id}`}>
                         <video
                             loop
                             ref={videoRef}
