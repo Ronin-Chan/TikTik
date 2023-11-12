@@ -12,6 +12,7 @@ const Sidebar: NextPage = () => {
   const { pathname } = useRouter();
   const activeLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#915eff] rounded';
   const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold rounded';
+  console.log(pathname);
   
   return (
     <div>

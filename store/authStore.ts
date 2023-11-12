@@ -5,7 +5,7 @@ import axios from "axios";
 const authStore = (set: any) => ({
     userProfile: null,
 
-    addUser:(user: any) => {
+    addUser: (user: any) => {
         set({ userProfile: user });
     },
     removeUser: () => {
