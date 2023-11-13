@@ -57,7 +57,7 @@ const Detail = ({ postDetails }: IProps) => {
   const addComment = async (e: any) => {
     e.preventDefault();
 
-    if(userProfile && comment) {
+    if (userProfile && comment) {
       setIsPostingComment(true);
 
       const { data } = await axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post/${post._id}`, {
@@ -152,9 +152,9 @@ const Detail = ({ postDetails }: IProps) => {
               </div>
             </div>
 
-            <p className='px-10 text-lg text-gray-600'>
-              {post.caption}
-            </p>
+            <div className='px-10'>
+              <p className=' text-md text-gray-600'>{post.caption}</p>
+            </div>
 
             <div className='mt-10 px-10'>
               {userProfile && (
@@ -165,7 +165,7 @@ const Detail = ({ postDetails }: IProps) => {
                 />
               )}
             </div>
-            <Comments 
+            <Comments
               comment={comment}
               setComment={setComment}
               addComment={addComment}
