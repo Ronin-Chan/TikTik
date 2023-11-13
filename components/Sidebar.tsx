@@ -6,6 +6,8 @@ import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import Discover from './Discover';
 import Footer from './Footer';
+import SuggestedAccounts from './SuggestedAccounts';
+import useAuthStore from '../store/authStore';
 
 const Sidebar: NextPage = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -13,6 +15,7 @@ const Sidebar: NextPage = () => {
   const activeLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#915eff] rounded';
   const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold rounded';
   console.log(pathname);
+  const { fetchAllUsers, allUsers } = useAuthStore();
   
   return (
     <div>
@@ -35,7 +38,10 @@ const Sidebar: NextPage = () => {
             </Link>
           </div>
           <Discover />
-          {/* <SuggestedAccounts/> */}
+          <SuggestedAccounts
+            fetchAllUsers={fetchAllUsers}
+            allUsers={allUsers}
+          />
           <Footer />
         </div>
       )}

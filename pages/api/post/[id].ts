@@ -18,7 +18,8 @@ export default async function handler(
     const { comment, userId } = req.body;
     const { id }: any = req.query;
 
-    const data = await client.patch(id)
+    const data = await client
+      .patch(id)
       .setIfMissing({ comments: [] })
       .insert('after', 'comments[-1]', [{
         comment,
@@ -30,6 +31,6 @@ export default async function handler(
       }])
       .commit();
 
-      res.status(200).json(data);
+    res.status(200).json(data);
   }
 }
