@@ -121,7 +121,7 @@ const Detail = ({ postDetails }: IProps) => {
       </div>
 
       <div className='relative w-[1000px] md:w-[900px] lg:w-[700pxp]'>
-        <div className='lg:mt-20 mt-10'>
+        <div className='lg:mt-10 mt-5'>
           <div>
             <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
               <div className='md:w-20 md:h-20 w-16 h-16 ml-4'>
