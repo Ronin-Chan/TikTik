@@ -66,17 +66,24 @@ const Upload = () => {
 
     }
 
+    const handleDiscard = () => {
+        setSavingPost(false);
+        setVideoAsset(undefined);
+        setCaption('');
+        setCategory('');
+    };
+
     return (
-        <div className='flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#f8f8f8] justify-center'>
-            <div className='rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-evenly items-center p-14 pt-6 w-[60%]'>
+        <div className='flex w-full h-full absolute left-0 top-[60px] lg:top-[70px] mb-10 pt-10 lg:pt-15 bg-white justify-center'>
+            <div className='bg-white rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-evenly items-center p-14 pt-6 w-[80%]'>
                 <div>
                     <div>
                         <p className='text-2xl font-bold'>Upload Video</p>
                         <p className='text-md text-gray-400 mt-1'>Post a video to your account</p>
                     </div>
-                    <div className='border-dashed rounded-xl border-4 border-gray=200 flex flex-col justify-center items-center outline-none mt-10 w-[300px] h-[520px] p-10 cursor-pointer hover:border-purple-300 hover:bg-gray-100'>
+                    <div className='border-dashed rounded-xl border-4 border-gray=200 flex flex-col justify-center items-center outline-none mt-10 w-[260px] h-[490px] p-10 cursor-pointer hover:border-purple-300 hover:bg-gray-100'>
                         {isLoading ? (
-                            <p>Uploading...</p>
+                            <p className='text-center text-3xl text-purple-400 font-semibold'>Uploading...</p>
                         ) : (
                             <div>
                                 {videoAsset ? (
@@ -85,7 +92,7 @@ const Upload = () => {
                                             src={videoAsset?.url}
                                             loop
                                             controls
-                                            className='rounded-xl h-[450px] mt-1 bg-black'
+                                            className='rounded-xl h-[450px] mt-2 bg-black'
                                         >
 
                                         </video>
@@ -159,15 +166,18 @@ const Upload = () => {
                     </select>
                     <div className='flex gap-6 mt-10'>
                         <button
-                            className='border-2 border-gray-300 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
+                            className='border-2 border-gray-300 text-md 
+                            font-medium p-2 rounded w-28 lg:w-44 outline-none'
+                            onClick={handleDiscard}
                         >
                             Discard
                         </button>
                         <button
+                            disabled={videoAsset?.url ? false : true}
                             onClick={handlePost}
                             className='bg-[#915eff] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
                         >
-                            Post
+                            {savingPost ? 'Posting...' : 'Post'}
                         </button>
                     </div>
                 </div>
